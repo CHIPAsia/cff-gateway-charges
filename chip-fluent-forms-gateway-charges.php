@@ -5,6 +5,9 @@
  * Plugin Name: CHIP FluentForms Gateway Charges
  * Description: This to inject gateway charges to total amount
  * Version: 1.0.0
+ * 
+ * License: GNU General Public License v3.0
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  */
 
 add_filter( 'ff_chip_create_purchase_params', 'cff_inject_gateway_charges', 10, 4 );
