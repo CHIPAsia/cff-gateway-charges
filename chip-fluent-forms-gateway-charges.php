@@ -12,6 +12,7 @@
 
 add_filter( 'ff_chip_create_purchase_params', 'cff_inject_gateway_charges', 10, 4 );
 // add_filter( 'ff_chip_handle_paid_data', 'cff_reverse_total_amount', 10, 4 );
+add_action( 'ff_chip_after_purchase_create', 'cff_inject_order_item', 10, 4 );
 
 function cff_minimum_fee() {
   return 150; // RM 1.50
@@ -54,4 +55,38 @@ function cff_reverse_total_amount( $transaction_data, $submission, $transaction,
   }
   
   return $transaction_data;
+}
+
+function cff_inject_order_item( $transaction, $submission, $form, $payment ) {
+  $item_price = 0;
+
+  foreach( $payment['purchase']['products'] as $product ) {
+    if ( $product['name'] == cff_product_title() ) {
+      $item_price = intval( $product['price'] );
+      break;
+    }
+  }
+
+  $item = array([
+    'type' => 'single',
+    'form_id' => $form->id,
+    'quantity' => '1',
+    'created_at' => current_time('mysql'),
+    'updated_at' => current_time('mysql'),
+    'parent_holder' => 'payment_input',
+    'item_name' => cff_product_title(),
+    'item_price' => $item_price,
+    'line_total' => $item_price,
+    'submission_id' => $submission->id,
+  ]);
+
+  wpFluent()->table('fluentform_order_items')->insert($item);
+
+  wpFluent()->table('fluentform_submissions')
+            ->where('id', $submission->id)
+            ->update(['payment_total' => intval($payment['purchase']['total'])]);
+
+  wpFluent()->table('fluentform_transactions')
+            ->where('id', $transaction->id)
+            ->update(['payment_total' => intval($payment['purchase']['total'])]);
 }
