@@ -14,6 +14,13 @@ This plugin utilize below filter to achieve the gateway charges:
 * Select **Upload Plugin**, choose zip file you downloaded in step 1 and press **Install Now**
 * Activate plugin
 
+## Rate
+
+By default this plugin will add a new product where:
+
+- Minimum Fee: RM 1.50 or;
+- Standard Fee: 2.2% of total amount + RM 1; whichever is higher
+
 ## Other
 
 Facebook: [Merchants & DEV Community](https://www.facebook.com/groups/3210496372558088)
