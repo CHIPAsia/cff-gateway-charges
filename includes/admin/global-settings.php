@@ -22,7 +22,7 @@ $credentials_global_fields = array(
     'id'    => 'minimum_fee',
     'type'  => 'number',
     'title' => __( 'Minimum Fee', 'cff_gc' ),
-    'desc'  => __( 'Enter the minimum fee in sens.', 'cff_gc' ),
+    'desc'  => __( 'Enter the minimum fee in sens. Set 100 for RM 1.', 'cff_gc' ),
     'help'  => __( 'This minimum fee will be applied if the combination of fixed and percentage charges does not exceed minimum fee.', 'cff_gc' ),
   ),
   array(
@@ -36,7 +36,7 @@ $credentials_global_fields = array(
     'id'    => 'fixed_rate',
     'type'  => 'number',
     'title' => __( 'Fixed Fee', 'cff_gc' ),
-    'desc'  => __( 'Enter the fixed fee in sens.', 'cff_gc' ),
+    'desc'  => __( 'Enter the fixed fee in sens. Set 100 for RM 1.', 'cff_gc' ),
     'help'  => __( 'This fixed rate fee will be applied on the total amount.', 'cff_gc' ),
   ));
 
@@ -49,7 +49,7 @@ CSF_Setup::createSection( $slug, array(
 CSF_Setup::createSection( $slug, array(
   'parent'      => 'global-configuration',
   'id'          => 'cffgc',
-  'title'       => __( 'Fluent Form', 'cff_gc' ),
+  'title'       => __( 'Charges', 'cff_gc' ),
   'description' => __( 'Configure gateway charges.', 'cff_gc' ),
   'fields'      => $credentials_global_fields,
 ) );
