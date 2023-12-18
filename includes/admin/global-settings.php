@@ -22,22 +22,22 @@ $credentials_global_fields = array(
     'id'    => 'minimum_fee',
     'type'  => 'number',
     'title' => __( 'Minimum Fee', 'cff_gc' ),
-    'desc'  => __( 'Enter the minimum fee in sens. Set 100 for RM 1.', 'cff_gc' ),
-    'help'  => __( 'This minimum fee will be applied if the combination of fixed and percentage charges does not exceed minimum fee.', 'cff_gc' ),
+    'desc'  => __( 'Enter the minimum fee in sens. Set 100 for RM 1. Leave blank for default RM 1 or set 0 for RM 0.00.', 'cff_gc' ),
+    'help'  => __( 'This minimum fee will be applied if the combination of fixed and percentage charges does not exceed minimum fee. Leave blank for default RM 1 or set 0 for RM 0.00.', 'cff_gc' ),
   ),
   array(
     'id'    => 'variable_rate',
     'type'  => 'number',
     'title' => __( 'Variable Fee', 'cff_gc' ),
-    'desc'  => __( 'Enter the variable fee in percentage. Set 2200 for 2.2%.', 'cff_gc' ),
-    'help'  => __( 'This variable rate fee will be applied on the total amount.', 'cff_gc' ),
+    'desc'  => __( 'Enter the variable fee in percentage. Set 2200 for 2.2%. Leave blank for default 2.2% or set 0 for 0.00%.', 'cff_gc' ),
+    'help'  => __( 'This variable rate fee will be applied on the total amount. Leave blank for default 2.2% or set 0 for 0.00%.', 'cff_gc' ),
   ),
   array(
     'id'    => 'fixed_rate',
     'type'  => 'number',
     'title' => __( 'Fixed Fee', 'cff_gc' ),
-    'desc'  => __( 'Enter the fixed fee in sens. Set 100 for RM 1.', 'cff_gc' ),
-    'help'  => __( 'This fixed rate fee will be applied on the total amount.', 'cff_gc' ),
+    'desc'  => __( 'Enter the fixed fee in sens. Set 100 for RM 1. Leave blank for default RM 1 or set 0 for RM 0.00.', 'cff_gc' ),
+    'help'  => __( 'This fixed rate fee will be applied on the total amount. Leave blank for default RM 1 or set 0 for RM 0.00.', 'cff_gc' ),
   ));
 
 CSF_Setup::createSection( $slug, array(
