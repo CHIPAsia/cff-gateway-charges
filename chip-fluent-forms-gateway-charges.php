@@ -24,7 +24,7 @@ add_action( 'ff_chip_after_purchase_create', 'cff_inject_order_item', 10, 4 );
 function cff_minimum_fee( $form_id ) {
   $options  = cff_get_settings( $form_id );
   if ( !isset( $options['minimum_fee'] ) ) {
-    return 150; // RM 1.50
+    return 100; // RM 1.00
   }
   return $options['minimum_fee'];
 }
@@ -40,7 +40,7 @@ function cff_variable_rate( $form_id ) {
 function cff_fixed_rate( $form_id ) {
   $options  = cff_get_settings( $form_id );
   if ( !isset( $options['fixed_rate'] ) ) {
-    return 0.022; // 2.2%
+    return 100; // RM 1.00
   }
   return $options['fixed_rate'];
 }
