@@ -8,6 +8,7 @@
  * Author URI: https://www.chip-in.asia
  * Requires PHP: 7.4
  * Requires at least: 6.1
+ * Text Domain: cff_gc
  *
  * Copyright: © 2025 CHIP
  * License: GNU General Public License v3.0
