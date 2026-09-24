@@ -25,7 +25,21 @@ define( 'CFFGC_MODULE_VERSION', 'v1.0.0' );
 
 require plugin_dir_path( __FILE__ ) . 'includes/class-chip-ff-settings.php';
 require plugin_dir_path( __FILE__ ) . 'includes/class-chip-ff-settings-page.php';
-require plugin_dir_path( __FILE__ ) . 'includes/admin/global-settings.php';
+
+/**
+ * Registers the global settings once translations are ready.
+ *
+ * The field labels are translated, so this file cannot be included while the
+ * plugin itself is loading: calling __() before `init` makes WordPress log a
+ * _load_textdomain_just_in_time notice on every request (6.7 and later).
+ *
+ * @return void
+ */
+function cff_gc_load_global_settings() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/admin/global-settings.php';
+}
+
+add_action( 'init', 'cff_gc_load_global_settings', 0 );
 
 /**
  * Builds the settings page once every settings file has registered its
@@ -246,12 +260,25 @@ function cff_inject_order_item( $transaction, $submission, $form, $payment ) {
 }
 
 /**
- * Registers the per-form settings once Fluent Forms has loaded.
+ * Registers the per-form settings once translations are ready.
+ *
+ * Fluent Forms is loaded by plugins_loaded, but its field labels are
+ * translated, so the file cannot be included before `init`: calling __()
+ * earlier makes WordPress log a _load_textdomain_just_in_time notice.
+ * chip-for-fluent-forms includes its equivalent file from `init` for the
+ * same reason.
+ *
+ * The `wpFluent()` guard keeps the plugin inert when Fluent Forms is
+ * inactive, since the file queries the forms table as it loads.
  *
  * @return void
  */
 function load_chip_gateway_charges_form_settings() {
-	include plugin_dir_path( __FILE__ ) . 'includes/admin/form-settings.php';
+	if ( ! function_exists( 'wpFluent' ) ) {
+		return;
+	}
+
+	require_once plugin_dir_path( __FILE__ ) . 'includes/admin/form-settings.php';
 }
 
-add_action( 'plugins_loaded', 'load_chip_gateway_charges_form_settings' );
+add_action( 'init', 'load_chip_gateway_charges_form_settings', 0 );
