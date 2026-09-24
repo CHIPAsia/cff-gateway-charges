@@ -1,0 +1,7 @@
+== Changelog ==
+
+= 1.0.0 - 2026-09-24 =
+* Changed - The bundled settings framework was replaced with our own. Your saved settings are kept exactly as they were, so nothing needs to be reconfigured.
+* Fixed   - Changing settings from a crafted link is no longer possible, and saving settings now also checks that the user is allowed to manage the site.
+* Added   - A minimum fee, variable fee or fixed fee of 0 is now honoured instead of being silently replaced by the default.
+* Added   - The plugin option is now removed when the plugin is uninstalled, including on every site in a multisite network.
