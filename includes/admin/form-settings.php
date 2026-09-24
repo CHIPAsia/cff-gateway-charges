@@ -44,7 +44,7 @@ function ff_chip_gateway_charges_form_fields( $form ){
     return $form_fields;
 }
 
-CSF_Setup::createSection( $slug, array(
+CHIP_FF_Settings::createSection( $slug, array(
   'id'    => 'form-configuration',
   'title' => __( 'Form Configuration', 'cff_gc' ),
   'icon'  => 'fa fa-gear'
@@ -58,7 +58,7 @@ $all_forms_query = wpFluent()->table('fluentform_forms')
 
 foreach( $all_forms_query as $form ) {
 
-  CSF_Setup::createSection( $slug, array(
+  CHIP_FF_Settings::createSection( $slug, array(
     'parent'      => 'form-configuration',
     'id'          => 'form-id-' . $form->id,
     'title'       => sprintf( __( 'Form #%s - %s', 'cff_gc' ), $form->id, substr( $form->title, 0, 15 ) ),

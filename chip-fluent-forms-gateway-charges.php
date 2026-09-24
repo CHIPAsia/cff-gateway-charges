@@ -12,8 +12,20 @@
 
 define( 'CFFGC_SLUG', 'cff_gc' );
 
-include plugin_dir_path( __FILE__ ) . 'includes/codestar-framework/classes/setup.class.php';
+include plugin_dir_path( __FILE__ ) . 'includes/class-chip-ff-settings.php';
+include plugin_dir_path( __FILE__ ) . 'includes/class-chip-ff-settings-page.php';
 include plugin_dir_path( __FILE__ ) . 'includes/admin/global-settings.php';
+
+// The settings page is built after every settings file has registered its
+// sections; building it earlier would snapshot an empty section list.
+add_action( 'init', array( 'CHIP_FF_Settings', 'init_pages' ), 100 );
+add_action(
+	'init',
+	function () {
+		CHIP_FF_Settings::$version = '1.0.0';
+	},
+	1
+);
 
 add_action( 'plugins_loaded', 'load_chip_gateway_charges_form_settings' );
 
