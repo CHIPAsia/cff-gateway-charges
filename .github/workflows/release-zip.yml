@@ -1,0 +1,37 @@
+name: Create Release Zip
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build-and-release:
+    name: Build and Upload Release Zip
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      # git archive honours .gitattributes export-ignore, so the zip carries the
+      # plugin only - no phpcs.xml, CI workflows or composer files.
+      - name: Prepare plugin folder
+        run: |
+          mkdir -p dist/cff-gateway-charges
+          git archive HEAD | tar -x -C dist/cff-gateway-charges
+          echo "✅ Prepared plugin folder"
+          ls -la dist/cff-gateway-charges
+
+      - name: Create zip file
+        run: |
+          cd dist
+          zip -r ../cff-gateway-charges.zip cff-gateway-charges
+          cd ..
+          echo "✅ Created zip file"
+          ls -la cff-gateway-charges.zip
+
+      - name: Upload release asset
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" cff-gateway-charges.zip --clobber
