@@ -2,7 +2,7 @@
 
 $slug = CFFGC_SLUG;
 
-CSF_Setup::createOptions( $slug, array(
+CHIP_FF_Settings::createOptions( $slug, array(
   'framework_title' => __( 'Fluent Form Gateway Charges', 'cff_gc' ),
 
   'menu_title'  => __( 'Fluent Form Gateway Charges Settings', 'cff_gc' ),
@@ -40,13 +40,13 @@ $credentials_global_fields = array(
     'help'  => __( 'This fixed rate fee will be applied on the total amount. Leave blank for default RM 1 or set 0 for RM 0.00.', 'cff_gc' ),
   ));
 
-CSF_Setup::createSection( $slug, array(
+CHIP_FF_Settings::createSection( $slug, array(
   'id'    => 'global-configuration',
   'title' => __( 'Global Configuration', 'cff_gc' ),
   'icon'  => 'fa fa-home',
 ) );
 
-CSF_Setup::createSection( $slug, array(
+CHIP_FF_Settings::createSection( $slug, array(
   'parent'      => 'global-configuration',
   'id'          => 'cffgc',
   'title'       => __( 'Charges', 'cff_gc' ),
