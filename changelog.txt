@@ -8,3 +8,5 @@
 * Fixed   - The plugin now loads alongside CHIP for Fluent Forms and CHIP for Paymattic without a fatal error, whichever of them is activated first.
 * Fixed   - Plugin and PHP compatibility is now checked in CI, and the settings files pass the WordPress coding standards.
 * Fixed   - The settings are now registered after WordPress has loaded translations, so the plugin no longer logs a `_load_textdomain_just_in_time` notice on every request.
+* Fixed   - The README now states the real default minimum fee (RM 1.00) and lists only the filter the plugin actually uses.
+* Added   - Releases now attach a ready-to-install zip whose plugin folder is named correctly.
