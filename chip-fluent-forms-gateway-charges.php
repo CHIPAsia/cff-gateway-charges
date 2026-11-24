@@ -3,7 +3,7 @@
  * Plugin Name: CHIP FluentForms Gateway Charges
  * Plugin URI: https://github.com/CHIPAsia/cff-gateway-charges
  * Description: Adds CHIP gateway charges to the Fluent Forms payment total.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Chip In Sdn Bhd
  * Author URI: https://www.chip-in.asia
  * Requires PHP: 7.4
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die; } // Cannot access directly.
 
 define( 'CFFGC_SLUG', 'cff_gc' );
-define( 'CFFGC_MODULE_VERSION', 'v1.0.0' );
+define( 'CFFGC_MODULE_VERSION', 'v1.0.1' );
 
 require plugin_dir_path( __FILE__ ) . 'includes/class-chip-ff-settings.php';
 require plugin_dir_path( __FILE__ ) . 'includes/class-chip-ff-settings-page.php';

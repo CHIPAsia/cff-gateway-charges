@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 1.0.1 - 2026-11-24 =
+* Fixed   - A settings field flagged as hidden is now actually hidden on the CHIP settings page. The shared stylesheet gave every field its own display value, which outranked the hidden flag.
+* Changed - Tested against PHP 8.6.
+
 = 1.0.0 - 2026-09-24 =
 * Changed - The bundled settings framework was replaced with our own. Your saved settings are kept exactly as they were, so nothing needs to be reconfigured.
 * Fixed   - Changing settings from a crafted link is no longer possible, and saving settings now also checks that the user is allowed to manage the site.
